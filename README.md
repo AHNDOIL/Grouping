@@ -1,5 +1,5 @@
 # ✒ Grouping
-
+![Screenshot 2023-03-28 at 14 09 23](https://github.com/AHNDOIL/Grouping/assets/103185987/bc4f93de-b80a-4e38-9480-bd7430312d81)
 
 ## 📢 프로젝트 소개
 

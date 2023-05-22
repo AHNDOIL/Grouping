@@ -30,12 +30,6 @@ public class CommentEntity extends BaseEntity{
     public CommentEntity() {
     }
 
-    public CommentEntity(Long id, String content, UserEntity author, PostEntity post) {
-        this.id = id;
-        this.content = content;
-        this.author = author;
-        this.post = post;
-    }
 
     public Long getId() {
         return id;

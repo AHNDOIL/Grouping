@@ -27,6 +27,66 @@ public class GroupEntity extends BaseEntity{
     private List<GroupMemberEntity> members = new ArrayList<>();
 
 
+    public GroupEntity() {
+    }
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+
+    public String getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(String restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public UserEntity getLeader() {
+        return leader;
+    }
+
+    public void setLeader(UserEntity leader) {
+        this.leader = leader;
+    }
+
+    public List<GroupMemberEntity> getMembers() {
+        return members;
+    }
+
+    public void setMembers(List<GroupMemberEntity> members) {
+        this.members = members;
+    }
+
+    @Override
+    public String toString() {
+        return "GroupEntity{" +
+                "id=" + id +
+                ", groupName='" + groupName + '\'' +
+                ", restaurant='" + restaurant + '\'' +
+                ", location='" + location + '\'' +
+                ", leader=" + leader +
+                ", members=" + members +
+                '}';
+    }
 }

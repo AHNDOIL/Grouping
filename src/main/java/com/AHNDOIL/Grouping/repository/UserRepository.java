@@ -1,4 +1,8 @@
 package com.AHNDOIL.Grouping.repository;
 
-public interface UserRepository {
+import com.AHNDOIL.Grouping.entity.UserEntity;
+import org.springframework.data.repository.CrudRepository;
+
+public interface UserRepository extends CrudRepository<UserEntity, Long> {
+    UserEntity findByUsername(String username);
 }

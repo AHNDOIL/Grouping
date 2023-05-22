@@ -1,6 +1,7 @@
 package com.AHNDOIL.Grouping.entity;
 
 import jakarta.persistence.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "USER_ENTITY")
+@EntityListeners(AuditingEntityListener.class) //BaseEntity
 public class UserEntity extends BaseEntity{
 
     @Id
@@ -28,7 +30,7 @@ public class UserEntity extends BaseEntity{
     @OneToMany(
             targetEntity = PostEntity.class,
             fetch = FetchType.LAZY,
-            mappedBy = "author",
+            mappedBy = "author", //postEntity의 author
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
@@ -37,13 +39,16 @@ public class UserEntity extends BaseEntity{
     @OneToMany(
             targetEntity = CommentEntity.class,
             fetch = FetchType.LAZY,
-            mappedBy = "author",
+            mappedBy = "author", //commentEntity의 author
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
     private List<CommentEntity> comments = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany( //OneToMany에서는 targetEntity를 지정하지 않아도 자동으로 추론해준다.
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     private List<GroupMemberEntity> groupMemberships = new ArrayList<>();
 
     public UserEntity() {

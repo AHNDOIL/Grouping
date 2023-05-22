@@ -1,12 +1,14 @@
 package com.AHNDOIL.Grouping.entity;
 
 import jakarta.persistence.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "GROUP_ENTITY")
+@EntityListeners(AuditingEntityListener.class)
 public class GroupEntity extends BaseEntity{
 
     @Id

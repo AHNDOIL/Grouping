@@ -1,11 +1,12 @@
 package com.AHNDOIL.Grouping.entity;
 
 import jakarta.persistence.*;
-
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 
 @Entity
 @Table(name = "COMMENT_ENTITY")
+@EntityListeners(AuditingEntityListener.class)
 public class CommentEntity extends BaseEntity{
 
     @Id

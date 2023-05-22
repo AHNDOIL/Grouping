@@ -1,12 +1,14 @@
 package com.AHNDOIL.Grouping.entity;
 
 import jakarta.persistence.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "POST_ENEITY")
+@Table(name = "POST_ENTITY")
+@EntityListeners(AuditingEntityListener.class)
 public class PostEntity extends BaseEntity{
 
     @Id
@@ -24,12 +26,12 @@ public class PostEntity extends BaseEntity{
     @ManyToOne(
             targetEntity = UserEntity.class,
             fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id") //외래키 지정
     private UserEntity author;
 
     @OneToMany( //OneToMany에서는 mappedBy로 연관관계 설정
             targetEntity = CommentEntity.class,
-            mappedBy = "post",
+            mappedBy = "post", //commentEntity의 post 필드
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     private List<CommentEntity> comments = new ArrayList<>();

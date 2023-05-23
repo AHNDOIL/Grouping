@@ -20,9 +20,23 @@
     <h3>
         반갑습니다. <span sec:authentication="name"></span>님!
     </h3>
+
+
+
     <form th:action="@{/user/logout}" method="post">
         <input type="submit" th:value="로그아웃">
     </form>
+
+    <!-- 올라와있는 게시글들 모두 보기, 글쓰기-->
+    <form th:action="@{/post/create}" method="get">
+        <input type="submit" th:value="글쓰기">
+    </form>
+
+    <form th:action="@{/post/read/1}" method="get">
+        <input type="submit" th:value="읽기">
+    </form>
+
+
 </div>
 
 </body>

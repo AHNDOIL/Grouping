@@ -1,4 +1,7 @@
 package com.AHNDOIL.Grouping.repository;
 
-public interface CommentRepository {
+import com.AHNDOIL.Grouping.entity.CommentEntity;
+import org.springframework.data.repository.CrudRepository;
+
+public interface CommentRepository extends CrudRepository<CommentEntity, Long> {
 }

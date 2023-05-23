@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Read Post</title>
+</head>
+<body>
+<h1>View Post</h1>
+<div>
+    <h2 th:text="${postDto.title}"></h2>
+    <p th:text="${postDto.content}"></p>
+    <p>Author: <span th:text="${postDto.author.username}"></span></p>
+    <p>Restaurant: <span th:text="${postDto.restaurant}"></span></p>
+    <p>Location: <span th:text="${postDto.location}"></span></p>
+    <p>Member Count: <span th:text="${postDto.memberCount}"></span></p>
+
+    <form th:action="@{/post/update/{postId}(postId=${postDto.id})}" method="get">
+        <input type="submit" th:value="수정하기">
+    </form>
+</div>
+</body>
+</html>

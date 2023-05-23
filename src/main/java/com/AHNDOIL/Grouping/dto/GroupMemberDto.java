@@ -1,15 +1,18 @@
 package com.AHNDOIL.Grouping.dto;
 
+import com.AHNDOIL.Grouping.entity.GroupEntity;
+import com.AHNDOIL.Grouping.entity.UserEntity;
+
 public class GroupMemberDto {
 
     private Long id;
-    private GroupDto group;
-    private UserDto user;
+    private GroupEntity group;
+    private UserEntity user;
 
     public GroupMemberDto() {
     }
 
-    public GroupMemberDto(Long id, GroupDto group, UserDto user) {
+    public GroupMemberDto(Long id, GroupEntity group, UserEntity user) {
         this.id = id;
         this.group = group;
         this.user = user;
@@ -23,19 +26,19 @@ public class GroupMemberDto {
         this.id = id;
     }
 
-    public GroupDto getGroup() {
+    public GroupEntity getGroup() {
         return group;
     }
 
-    public void setGroup(GroupDto group) {
+    public void setGroup(GroupEntity group) {
         this.group = group;
     }
 
-    public UserDto getUser() {
+    public UserEntity getUser() {
         return user;
     }
 
-    public void setUser(UserDto user) {
+    public void setUser(UserEntity user) {
         this.user = user;
     }
 

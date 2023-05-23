@@ -1,5 +1,7 @@
 package com.AHNDOIL.Grouping.dto;
 
+import com.AHNDOIL.Grouping.entity.UserEntity;
+
 import java.util.List;
 
 public class GroupDto {
@@ -9,14 +11,14 @@ public class GroupDto {
     private String groupName;
     private String restaurant;
     private String location;
-    private UserDto leader;
+    private UserEntity leader;
     private List<GroupMemberDto> members;
     // 필요한 추가 필드들...
 
     public GroupDto() {
     }
 
-    public GroupDto(Long id, String groupName, String restaurant, String location, UserDto leader, List<GroupMemberDto> members) {
+    public GroupDto(Long id, String groupName, String restaurant, String location, UserEntity leader, List<GroupMemberDto> members) {
         this.id = id;
         this.groupName = groupName;
         this.restaurant = restaurant;
@@ -57,11 +59,11 @@ public class GroupDto {
         this.location = location;
     }
 
-    public UserDto getLeader() {
+    public UserEntity getLeader() {
         return leader;
     }
 
-    public void setLeader(UserDto leader) {
+    public void setLeader(UserEntity leader) {
         this.leader = leader;
     }
 

@@ -1,4 +1,7 @@
 package com.AHNDOIL.Grouping.repository;
 
-public interface GroupRepository {
+import com.AHNDOIL.Grouping.entity.GroupEntity;
+import org.springframework.data.repository.CrudRepository;
+
+public interface GroupRepository extends CrudRepository<GroupEntity, Long> {
 }

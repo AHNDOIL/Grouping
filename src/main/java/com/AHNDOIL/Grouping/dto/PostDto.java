@@ -1,5 +1,7 @@
 package com.AHNDOIL.Grouping.dto;
 
+import com.AHNDOIL.Grouping.entity.UserEntity;
+
 import java.util.List;
 
 public class PostDto {
@@ -11,14 +13,14 @@ public class PostDto {
     private String restaurant;
     private String location;
     private Long memberCount;
-    private UserDto author;
+    private UserEntity author;
     private List<CommentDto> comments;
 
 
     public PostDto() {
     }
 
-    public PostDto(Long id, String title, String content, String restaurant, String location, Long memberCount, UserDto author, List<CommentDto> comments) {
+    public PostDto(Long id, String title, String content, String restaurant, String location, Long memberCount, UserEntity author) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -26,7 +28,6 @@ public class PostDto {
         this.location = location;
         this.memberCount = memberCount;
         this.author = author;
-        this.comments = comments;
     }
 
     public Long getId() {
@@ -77,11 +78,11 @@ public class PostDto {
         this.memberCount = memberCount;
     }
 
-    public UserDto getAuthor() {
+    public UserEntity getAuthor() {
         return author;
     }
 
-    public void setAuthor(UserDto author) {
+    public void setAuthor(UserEntity author) {
         this.author = author;
     }
 

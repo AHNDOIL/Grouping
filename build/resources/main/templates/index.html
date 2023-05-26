@@ -3,41 +3,47 @@
         lang="en"
         xmlns:th="http://www.thymeleaf.org"
         xmlns:sec="http://www.w3.org/1999/xhtml"
->
-<head>
-    <meta charset="UTF-8">
-    <title>Simple Home</title>
-</head>
-<body>
-
-<div sec:authorize="isAnonymous()"> <!-- 로그인 안했을 때 -->
-    <h2>Hello World!</h2>
-    <button onclick="location.href = '/user/login'">로그인</button>
-    <button onclick="location.href = '/user/signup'">회원가입</button>
-</div>
-
-<div sec:authorize="isAuthenticated()"> <!-- 로그인 했을 때-->
-    <h3>
-        반갑습니다. <span sec:authentication="name"></span>님!
-    </h3>
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout/default}">
 
 
 
-    <form th:action="@{/user/logout}" method="post">
-        <input type="submit" th:value="로그아웃">
-    </form>
+<th:block layout:fragment="content">
 
-    <!-- 올라와있는 게시글들 모두 보기, 글쓰기-->
-    <form th:action="@{/post/create}" method="get">
-        <input type="submit" th:value="글쓰기">
-    </form>
+    <div sec:authorize="isAnonymous()" style="text-align: center;"> <!-- 로그인 안했을 때 -->
+        <h2>Grouping!</h2>
+        <div style="text-align: center;">
+            <img src="/image/logo.JPG" alt="로고">
+        </div>
 
-    <form th:action="@{/post/read/1}" method="get">
-        <input type="submit" th:value="읽기">
-    </form>
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            <button onclick="location.href = '/user/login'" class="btn btn-primary">로그인</button>
+            <button onclick="location.href = '/user/signup'" class="btn btn-outline-primary">회원가입</button>
+        </div>
+    </div>
+
+    <div sec:authorize="isAuthenticated()" style="text-align: center;"> <!-- 로그인 했을 때-->
+        <h3>
+            반갑습니다. <span sec:authentication="name"></span>님!
+        </h3>
 
 
-</div>
+        <form th:action="@{/user/logout}" method="post">
+            <input type="submit" th:value="로그아웃">
+        </form>
 
-</body>
+        <!-- 올라와있는 게시글들 모두 보기, 글쓰기-->
+        <form th:action="@{/post/create}" method="get">
+            <input type="submit" th:value="글쓰기">
+        </form>
+
+        <form th:action="@{/post/read/1}" method="get">
+            <input type="submit" th:value="읽기">
+        </form>
+
+
+    </div>
+
+</th:block>
+
 </html>

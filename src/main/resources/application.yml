@@ -12,4 +12,10 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
 
+thymeleaf:
+  cache: false
+  check-template-location: true
+  prefix: classpath:/templates/
+  suffix: .html
+  enabled: true
 

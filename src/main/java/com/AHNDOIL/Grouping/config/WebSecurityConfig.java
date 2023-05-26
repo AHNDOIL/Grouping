@@ -29,7 +29,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.csrf().disable(); //csrf 비활성화
         http.authorizeHttpRequests()
-                .requestMatchers("/home/**", "/user/signup/**").anonymous() //누구든지
+                .requestMatchers("/home/**", "/user/signup/**","/image/**").anonymous() //누구든지
                 .anyRequest().authenticated() //나머지는 허가된 사람만
             .and()
                 .formLogin()

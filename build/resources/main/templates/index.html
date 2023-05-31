@@ -37,8 +37,9 @@
             <input type="submit" th:value="글쓰기">
         </form>
 
-        <form th:action="@{/post/read/1}" method="get">
-            <input type="submit" th:value="읽기">
+
+        <form action="/post/readAll" method="get">
+            <input type="submit" value="현재 등록된 게시글 읽기">
         </form>
 
 

@@ -2,17 +2,18 @@
 <html
         lang="en"
         xmlns:th="http://www.thymeleaf.org"
-        xmlns:sec="http://www.w3.org/1999/xhtml"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout/default}">
 >
 <head>
     <meta charset="UTF-8">
     <title>Simple Admin Home</title>
 </head>
-<body>
+<th:block layout:fragment="content">
     Hello Admin!!
     <form th:action="@{/user/logout}" method="post">
 
         <input type="submit" th:value="로그아웃">
     </form>
-</body>
+</th:block>>
 </html>

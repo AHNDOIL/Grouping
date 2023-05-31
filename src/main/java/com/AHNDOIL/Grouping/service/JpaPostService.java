@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Objects;
+import java.util.*;
 
 @Service
 public class JpaPostService implements PostService {
@@ -75,6 +75,27 @@ public class JpaPostService implements PostService {
                 postEntity.getMemberCount(),
                 postEntity.getAuthor()
         );
+    }
+
+    @Override
+    public Collection<PostDto> readAll(){
+        Iterable<PostEntity> postEntities = this.postRepository.findAll();
+        Collection<PostDto> postDtos = new ArrayList<>();
+
+        for (PostEntity postEntity : postEntities) {
+            PostDto postDto = new PostDto(
+                    postEntity.getId(),
+                    postEntity.getTitle(),
+                    postEntity.getContent(),
+                    postEntity.getRestaurant(),
+                    postEntity.getLocation(),
+                    postEntity.getMemberCount(),
+                    postEntity.getAuthor()
+            );
+            postDtos.add(postDto);
+        }
+
+        return postDtos;
     }
 
     @Override

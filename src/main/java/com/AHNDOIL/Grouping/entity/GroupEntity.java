@@ -20,6 +20,7 @@ public class GroupEntity extends BaseEntity{
     private String restaurant;
     private String location;
 
+    private int memberCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "leader_id")
@@ -80,6 +81,14 @@ public class GroupEntity extends BaseEntity{
         this.members = members;
     }
 
+    public int getMemberCount() {
+        return memberCount;
+    }
+
+    public void setMemberCount(int memberCount) {
+        this.memberCount = memberCount;
+    }
+
     @Override
     public String toString() {
         return "GroupEntity{" +
@@ -87,6 +96,7 @@ public class GroupEntity extends BaseEntity{
                 ", groupName='" + groupName + '\'' +
                 ", restaurant='" + restaurant + '\'' +
                 ", location='" + location + '\'' +
+                ", memberCount=" + memberCount +
                 ", leader=" + leader +
                 ", members=" + members +
                 '}';

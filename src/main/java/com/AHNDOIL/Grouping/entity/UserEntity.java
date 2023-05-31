@@ -45,11 +45,23 @@ public class UserEntity extends BaseEntity{
     )
     private List<CommentEntity> comments = new ArrayList<>();
 
+    @OneToMany(
+            targetEntity = GroupEntity.class,
+            fetch = FetchType.LAZY,
+            mappedBy = "leader",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<GroupEntity> groups = new ArrayList<>();
+
+
     @OneToMany( //OneToMany에서는 targetEntity를 지정하지 않아도 자동으로 추론해준다.
             mappedBy = "user",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     private List<GroupMemberEntity> groupMemberships = new ArrayList<>();
+
+
 
     public UserEntity() {
     }
@@ -118,6 +130,13 @@ public class UserEntity extends BaseEntity{
         this.groupMemberships = groupMemberships;
     }
 
+    public List<GroupEntity> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<GroupEntity> groups) {
+        this.groups = groups;
+    }
     @Override
     public String toString() {
         return "UserEntity{" +
@@ -128,7 +147,11 @@ public class UserEntity extends BaseEntity{
                 ", role='" + role + '\'' +
                 ", posts=" + posts +
                 ", comments=" + comments +
+                ", groups=" + groups +
                 ", groupMemberships=" + groupMemberships +
                 '}';
     }
+
+
+
 }

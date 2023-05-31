@@ -10,6 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+import java.util.List;
+
 @Controller
 @RequestMapping("post")
 public class PostController {
@@ -45,6 +48,13 @@ public class PostController {
         }
         model.addAttribute("postDto", postDto);
         return "read-post";
+    }
+
+    @GetMapping("readAll")
+    public String readAllPost(Model model){
+        Collection<PostDto> postDtos = postService.readAll();
+        model.addAttribute("postDtos",postDtos);
+        return "read-all-posts";
     }
 
     @GetMapping("update/{postId}")

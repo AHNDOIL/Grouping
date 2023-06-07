@@ -99,7 +99,7 @@ public class JpaPostService implements PostService {
     }
 
     @Override
-    public boolean update(Long postId, PostDto postDto) {
+    public boolean update(Long postId, PostDto postDto) { //다른 유저가 버튼을 누르자 마자 forbidden을 시키도록 수정해야함
         if(!this.postRepository.existsById(postId)) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         PostEntity postEntity = this.postRepository.findById(postId).get();
 

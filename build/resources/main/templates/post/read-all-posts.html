@@ -5,28 +5,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Read All Posts</title>
-</head>
-<th:block layout:fragment="content">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
 
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Restaurant</th>
-            <th>Location</th>
-            <th>Member Count</th>
-            <th></th>
-        </tr>
-        <tr th:each="postDto : ${postDtos}">
-            <td th:text="${postDto.title}"></td>
-            <td th:text="${postDto.author.username}"></td>
-            <td th:text="${postDto.restaurant}"></td>
-            <td th:text="${postDto.location}"></td>
-            <td th:text="${postDto.memberCount}"></td>
-            <td>
-                <a th:href="@{/post/read/{postId}(postId=${postDto.id})}">View</a>
-            </td>
-        </tr>
-    </table>
-</th:block>>
+</head>
+    <th:block layout:fragment="content">
+
+        <table class="table table-striped">
+            <tr>
+                <th>제목</th>
+                <th>글쓴이</th>
+                <th>음식점</th>
+                <th>배달 위치</th>
+                <th>멤버 수</th>
+                <th></th>
+            </tr>
+            <tr th:each="postDto : ${postDtos}">
+                <td th:text="${postDto.title}"></td>
+                <td th:text="${postDto.author.nickname}"></td>
+                <td th:text="${postDto.restaurant}"></td>
+                <td th:text="${postDto.location}"></td>
+                <td th:text="${postDto.memberCount}"></td>
+                <td>
+                    <a th:href="@{/post/read/{postId}(postId=${postDto.id})}">자세히 보기</a>
+                </td>
+            </tr>
+        </table>
+    </th:block>
 </html>

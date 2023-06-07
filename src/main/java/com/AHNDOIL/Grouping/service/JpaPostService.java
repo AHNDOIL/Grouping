@@ -127,6 +127,11 @@ public class JpaPostService implements PostService {
         if (!this.postRepository.existsById(postId)) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         PostEntity postEntity = this.postRepository.findById(postId).get();
 
+        String username = authenticationFacade.getUserName();
+        UserEntity user = userRepository.findByUsername(username);
+
+        if(!user.equals(postEntity.getAuthor())) throw new ResponseStatusException(HttpStatus.FORBIDDEN);
+
         this.postRepository.deleteById(postId);
         return true;
     }

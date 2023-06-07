@@ -1,9 +1,12 @@
 package com.AHNDOIL.Grouping.service;
 
 import com.AHNDOIL.Grouping.dto.PostDto;
+import com.AHNDOIL.Grouping.entity.GroupEntity;
+import com.AHNDOIL.Grouping.entity.GroupMemberEntity;
 import com.AHNDOIL.Grouping.entity.PostEntity;
 import com.AHNDOIL.Grouping.entity.UserEntity;
 import com.AHNDOIL.Grouping.infra.AuthenticationFacade;
+import com.AHNDOIL.Grouping.repository.GroupRepository;
 import com.AHNDOIL.Grouping.repository.PostRepository;
 import com.AHNDOIL.Grouping.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +22,18 @@ public class JpaPostService implements PostService {
     private final PostRepository postRepository;
     private final UserRepository userRepository;
     private final AuthenticationFacade authenticationFacade;
+    private final GroupService groupService;
 
     public JpaPostService(
             @Autowired PostRepository postRepository,
             @Autowired UserRepository userRepository,
-            @Autowired AuthenticationFacade authenticationFacade
+            @Autowired AuthenticationFacade authenticationFacade,
+            @Autowired GroupService groupService
     ){
         this.postRepository = postRepository;
         this.userRepository = userRepository;
         this.authenticationFacade = authenticationFacade;
+        this.groupService = groupService;
     }
 
     @Override
@@ -47,6 +53,10 @@ public class JpaPostService implements PostService {
         postEntity.setLocation(postDto.getLocation());
         postEntity.setMemberCount(postDto.getMemberCount());
         postEntity = this.postRepository.save(postEntity);
+
+        GroupEntity groupEntity = groupService.create(postDto.getTitle(), postDto.getRestaurant(),
+                                                    postDto.getLocation(), postDto.getMemberCount(), user);
+
 
         return new PostDto(
                 postEntity.getId(),
@@ -116,8 +126,7 @@ public class JpaPostService implements PostService {
                 postDto.getRestaurant() == null ? postEntity.getRestaurant() : postDto.getRestaurant());
         postEntity.setLocation(
                 postDto.getLocation() == null ? postEntity.getLocation() : postDto.getLocation());
-        postEntity.setMemberCount(
-                postDto.getMemberCount() == null ? postEntity.getMemberCount() : postDto.getMemberCount());
+        postEntity.setMemberCount(postDto.getMemberCount());
         this.postRepository.save(postEntity);
         return true;
     }

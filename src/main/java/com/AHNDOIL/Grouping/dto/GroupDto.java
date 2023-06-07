@@ -11,6 +11,7 @@ public class GroupDto {
     private String groupName;
     private String restaurant;
     private String location;
+    private int memberCount;
     private UserEntity leader;
     private List<GroupMemberDto> members;
     // 필요한 추가 필드들...
@@ -18,11 +19,13 @@ public class GroupDto {
     public GroupDto() {
     }
 
-    public GroupDto(Long id, String groupName, String restaurant, String location, UserEntity leader, List<GroupMemberDto> members) {
+    public GroupDto(Long id, String groupName, String restaurant, String location,
+                    int memberCount, UserEntity leader, List<GroupMemberDto> members) {
         this.id = id;
         this.groupName = groupName;
         this.restaurant = restaurant;
         this.location = location;
+        this.memberCount = memberCount;
         this.leader = leader;
         this.members = members;
     }
@@ -38,6 +41,10 @@ public class GroupDto {
     public String getGroupName() {
         return groupName;
     }
+
+    public int getMemberCount() {return memberCount;}
+
+    public void setMemberCount(int memberCount) {this.memberCount = memberCount;}
 
     public void setGroupName(String groupName) {
         this.groupName = groupName;

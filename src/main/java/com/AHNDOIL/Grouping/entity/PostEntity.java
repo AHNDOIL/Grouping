@@ -20,7 +20,7 @@ public class PostEntity extends BaseEntity{
 
     private String restaurant; //음식점 이름
     private String location; //배달 받을 위치
-    private Long memberCount; // 멤버 수
+    private int memberCount; // 멤버 수
 
 
     @ManyToOne(
@@ -39,7 +39,7 @@ public class PostEntity extends BaseEntity{
     public PostEntity() {
     }
 
-    public PostEntity(Long id, String title, String content, String restaurant, String location, Long memberCount, UserEntity author, List<CommentEntity> comments) {
+    public PostEntity(Long id, String title, String content, String restaurant, String location, int memberCount, UserEntity author, List<CommentEntity> comments) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -90,11 +90,9 @@ public class PostEntity extends BaseEntity{
         this.location = location;
     }
 
-    public Long getMemberCount() {
-        return memberCount;
-    }
+    public int getMemberCount() { return memberCount; }
 
-    public void setMemberCount(Long memberCount) {
+    public void setMemberCount(int memberCount) {
         this.memberCount = memberCount;
     }
 

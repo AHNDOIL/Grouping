@@ -32,7 +32,7 @@ public class PostController {
     @GetMapping("create")
     public String createPostForm(Model model){
         PostDto postDto = new PostDto();
-        postDto.setMemberCount(1L);
+        postDto.setMemberCount(1);
         model.addAttribute("postDto",postDto); //기본 세팅을 전송
 
         return "post/create-post";
@@ -87,7 +87,7 @@ public class PostController {
     }
 
 
-    @DeleteMapping("delete/{postId}")
+    @PostMapping("delete/{postId}")
     public String deletePost(@PathVariable("postId") Long postId){
         this.postService.delete(postId);
         return "redirect:/home";

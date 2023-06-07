@@ -19,9 +19,18 @@
         <p>배달 위치: <span th:text="${postDto.location}" class="text-muted"></span></p>
         <p>멤버 수: <span th:text="${postDto.memberCount}" class="badge bg-secondary"></span></p>
 
-        <form th:action="@{/post/update/{postId}(postId=${postDto.id})}" method="get">
-            <button type="submit" class="btn btn-primary">수정하기</button>
-        </form>
+        <!-- 자신의 게시물에서 수정, 삭제하기 -->
+        <th:block th:if="${#authentication.principal.username == postDto.author.username}">
+            <form th:action="@{/post/update/{postId}(postId=${postDto.id})}" method="get">
+                <button type="submit" class="btn btn-primary">수정하기</button>
+            </form>
+
+            <form th:action="@{/post/delete/{postId}(postId=${postDto.id})}" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="btn btn-danger">삭제하기</button>
+            </form>
+        </th:block>
+
     </div>
 
     <!-- 댓글 목록 출력 -->

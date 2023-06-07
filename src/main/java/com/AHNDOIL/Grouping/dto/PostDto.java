@@ -12,7 +12,7 @@ public class PostDto {
     private String content;
     private String restaurant;
     private String location;
-    private Long memberCount;
+    private int memberCount;
     private UserEntity author;
     private List<CommentDto> comments;
 
@@ -20,7 +20,7 @@ public class PostDto {
     public PostDto() {
     }
 
-    public PostDto(Long id, String title, String content, String restaurant, String location, Long memberCount, UserEntity author) {
+    public PostDto(Long id, String title, String content, String restaurant, String location, int memberCount, UserEntity author) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -70,11 +70,11 @@ public class PostDto {
         this.location = location;
     }
 
-    public Long getMemberCount() {
+    public int getMemberCount() {
         return memberCount;
     }
 
-    public void setMemberCount(Long memberCount) {
+    public void setMemberCount(int memberCount) {
         this.memberCount = memberCount;
     }
 

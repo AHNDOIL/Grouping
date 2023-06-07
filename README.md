@@ -18,6 +18,7 @@
 - Spring Security
 - Docker
 - JPA
+- Thymeleaf
 
 
 ## 📌 시스템 구상도
@@ -25,6 +26,9 @@
 
 ## 📌 Use Case Diagram
 ![Use Case Diagram](https://github.com/AHNDOIL/Grouping/assets/103185987/1787ad15-df93-41df-b135-ea50ded0731e)
+
+## 📌 추가해야할 사항
+- 예외 처리
 
 
 ## 📌 주요 기능 

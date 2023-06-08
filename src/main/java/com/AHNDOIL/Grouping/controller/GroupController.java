@@ -40,13 +40,12 @@ public class GroupController {
 
 
     @GetMapping("read")
-    public String getCurrentUserGroups(Model model) {
+    public String readGroups(Model model) {
 
         String username = authenticationFacade.getUserName();
         UserEntity user = userRepository.findByUsername(username);
 
         Collection<GroupDto> groupDtos = groupService.readAll(user);
-
 
         model.addAttribute("groupDtos", groupDtos);
 

@@ -22,20 +22,13 @@ import java.util.stream.Collectors;
 public class JpaGroupService implements GroupService{
 
     private final GroupRepository groupRepository;
-
-    private final UserRepository userRepository;
-    private final AuthenticationFacade authenticationFacade;
     private final GroupMemberRepository groupMemberRepository;
 
     public JpaGroupService(
             @Autowired GroupRepository groupRepository,
-            @Autowired UserRepository userRepository,
-            @Autowired AuthenticationFacade authenticationFacade,
             @Autowired GroupMemberRepository groupMemberRepository
     ) {
         this.groupRepository = groupRepository;
-        this.userRepository = userRepository;
-        this.authenticationFacade = authenticationFacade;
         this.groupMemberRepository = groupMemberRepository;
     }
 
@@ -53,40 +46,16 @@ public class JpaGroupService implements GroupService{
 
         GroupMemberEntity groupMemberEntity = new GroupMemberEntity();
         groupMemberEntity.setGroup(savedGroup);
+        groupMemberEntity.setUser(leader);
         this.groupMemberRepository.save(groupMemberEntity);
 
         return savedGroup;
     }
 
-//    @Override
-//    public GroupDto read(UserEntity userEntity) {
-//
-//        GroupEntity groupEntity = this.groupRepository.findByUser(userEntity);
-//
-//        List<GroupMemberDto> groupMemberDtos = groupEntity.getMembers().stream()
-//                .map(member -> new GroupMemberDto(
-//                        member.getId(),
-//                        member.getGroup(),
-//                        member.getUser()
-//                ))
-//                .collect(Collectors.toList());
-//
-//        return new GroupDto(
-//                groupEntity.getId(),
-//                groupEntity.getGroupName(),
-//                groupEntity.getRestaurant(),
-//                groupEntity.getLocation(),
-//                groupEntity.getMemberCount(),
-//                groupEntity.getLeader(),
-//                groupMemberDtos
-//        );
-//    }
-
     @Override
     public Collection<GroupDto> readAll(UserEntity userEntity) {
-        //새로 로직 짜야함. 아래 로직은 실패해서 현재 접속한 userEntity로  groupMembership을 찾는 로직을 새로 만들어야함.
-        List<GroupMemberEntity> groupMemberships = userEntity.getGroupMemberships();
 
+        List<GroupMemberEntity> groupMemberships = userEntity.getGroupMemberships();
         List<GroupDto> groupDtos = new ArrayList<>();
 
         for (GroupMemberEntity groupMemberEntity : groupMemberships) {

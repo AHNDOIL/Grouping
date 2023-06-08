@@ -58,6 +58,7 @@ public class JpaPostService implements PostService {
                                                     postDto.getLocation(), postDto.getMemberCount(), user);
 
 
+
         return new PostDto(
                 postEntity.getId(),
                 postEntity.getTitle(),

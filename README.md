@@ -42,7 +42,7 @@
 ## 📌 프로젝트 실행 방법
 - 1.해당 프로젝트 clone
   ```
-  https://github.com/AHNDOIL/Grouping
+  https://github.com/AHNDOIL/Grouping.git
   ```
 - 2.MySQL schema 생성
   ```

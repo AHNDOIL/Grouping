@@ -44,9 +44,10 @@
   ```
   https://github.com/AHNDOIL/Grouping.git
   ```
-- 2.MySQL schema 생성
+- 2.MySQL schema 생성 (스키마 생성 후 사용자 생성에서 모든 권한을 부여하여야 합니다.)
   ```
-  schema : localhost-grouping
+  Connections : localhost-grouping
+  schema : grouping_schema
   username : newuser
   password : grouping1234
   ```
@@ -54,6 +55,6 @@
 - 4.localhost:8080/home을 접속
 
 - 현재 프로젝트는 Docker의 가상 컨테이너에 mysql을 생성 후 사용중이므로 동작이 다를 수 있습니다.
-- application.yml에서 원하는 schema, username, password를 설정할 수 있습니다.
+- application.yml에서 원하는 schema url, username, password를 설정할 수 있습니다. 
 
 

@@ -28,9 +28,32 @@
 ![Use Case Diagram](https://github.com/AHNDOIL/Grouping/assets/103185987/1787ad15-df93-41df-b135-ea50ded0731e)
 
 ## 📌 추가해야할 사항
+- 멤버의 그룹 신청 및 그룹장의 그룹 관리 기능
 - 예외 처리
 
+## 📌 현재 구현된 기능
+- Spring Security 로그인/로그아웃
+- 그루핑 게시글 CRUD
+- 댓글 CRUD
+- 그룹장이 그루핑 게시글 생성시 자동으로 자신이 속한 그룹 생성
+- Mypage
+  
 
-## 📌 주요 기능 
+## 📌 프로젝트 실행 방법
+- 1.해당 프로젝트 clone
+  ```
+  https://github.com/AHNDOIL/Grouping
+  ```
+- 2.MySQL schema 생성
+  ```
+  schema : localhost-grouping
+  username : newuser
+  password : grouping1234
+  ```
+- 3.IntelliJ로 해당 프로젝트를 연 뒤 GroupingApplication 실행
+- 4.localhost:8080/home을 접속
+
+- 현재 프로젝트는 Docker의 가상 컨테이너에 mysql을 생성 후 사용중이므로 동작이 다를 수 있습니다.
+- application.yml에서 원하는 schema, username, password를 설정할 수 있습니다.
 
 
